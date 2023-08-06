@@ -1,10 +1,10 @@
 export const themeColors = {
-    bg: '#877dfa',
+    bg: '#9f5afd',
     
     container: {
-        flex: 1,
-        height: '100%',
-        justifyContent: 'around'
+        flex: 1, 
+        alignItems: 'center',
+        justifyContent: 'center',
     },
     fill: {
         color: '#FFF',
