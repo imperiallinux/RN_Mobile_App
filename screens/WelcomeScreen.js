@@ -6,8 +6,8 @@ import { themeColors as tc } from '../themes'
 export default function WelcomeScreen() {
     return (
         <SafeAreaView className="flex-1" style={{backgroundColor: tc.bg}}>
-            <View className="flex-1 flex justify-around my-4">
-                <Text className=" text-white font-bold text-4xl text-center">
+            <View style={tc.container}>
+                <Text style={tc.fill}>
                     Welcome!!!
                 </Text>
             </View>
