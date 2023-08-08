@@ -1,6 +1,6 @@
 const width_proportion = '80%';
 export const themeColors = {
-    bg: '#9f5afd',
+    bg: '#fff',
 
     container: {
         flex: 1, 
@@ -26,14 +26,14 @@ export const themeColors = {
     bs : {
         paddingTop: 14,
         paddingBottom: 14,
-        backgroundColor: '#6f42c1',
+        backgroundColor: '#833191',
         marginLeft: 28,
         marginRight: 28,
         borderRadius: 12,
         width: 300,
     },
     bts: {
-        color: '#C1AECA',
+        color: '#fff',
         fontWeight: 'bold',
         fontSize: 22,
         textAlign: 'center',
@@ -49,9 +49,14 @@ export const themeColors = {
         fontWeight: '400',
     },
     lit: {
-        color: '#C1AECA',
+        color: '#833191',
         fontSize: 18,
         fontWeight: '600',
+    },
+    vlogin: {
+        flexDirection: 'row',
+        justifyContent: 'start',
+        marginTop: 10,
     },
  }  
 

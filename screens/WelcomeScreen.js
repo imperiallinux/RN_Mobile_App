@@ -12,10 +12,8 @@ export default function WelcomeScreen() {
         <SafeAreaProvider className="flex-1" style={{backgroundColor: tc.bg}}>
             <View style={tc.container}>
                 <View style={tc.v}>
-                    <Image source={require("../assets/images/welcome.png")} style={{width: 350, height: 200}}/>
+                    <Image source={require("../assets/images/logo_rn.png")} style={{width: 350, height: 400}}/>
                 </View>
-                <Text style={tc.fill2}>2</Text>
-                <Text style={tc.fill}>4 IN 1</Text>
                 <View style={tc.btn}>
                     <TouchableOpacity  style={tc.bs} onPress={()=>navigation.navigate('SignUp')}>
                         <Text style={tc.bts}>Sign Up</Text>
