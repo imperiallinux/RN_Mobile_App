@@ -1,7 +1,12 @@
 const width_proportion = '80%';
 export const themeColors = {
     bg: '#fff',
-
+    f: 1,
+    image: {
+        width: 200,
+        height: 200,
+        marginBottom: 40,
+    },
     container: {
         flex: 1, 
         alignItems: 'center',
@@ -57,6 +62,19 @@ export const themeColors = {
         flexDirection: 'row',
         justifyContent: 'start',
         marginTop: 10,
+    },
+    inputView: {
+        backgroundColor: "#DBC4F0",
+        borderRadius: 30,
+        width: "80%",
+        height: 45,
+        marginBottom: 20,
+        alignItems: "center",
+    },
+    textInput: {
+        height: 50,
+        flex: 1,
+        padding: 10,   
     },
  }  
 
