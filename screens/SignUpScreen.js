@@ -44,6 +44,9 @@ export default function SignUpScreen() {
                 autoCapitalize='none'
                 /> 
             </View> 
+            <TouchableOpacity style={tc.bsuli} onPress={()=>navigation.navigate()}>
+                    <Text style={tc.suliText}>Sign Up</Text>
+            </TouchableOpacity>
             <View style={tc.v}>
                 <Text style={tc.ubt}>Already have an account?</Text>
                 <TouchableOpacity onPress={()=>navigation.navigate('LogIn')}>

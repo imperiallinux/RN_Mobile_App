@@ -34,6 +34,9 @@ export default function LoginScreen() {
               autoCapitalize='none'
             /> 
           </View> 
+          <TouchableOpacity style={tc.bsuli} onPress={()=>navigation.navigate()}>
+                    <Text style={tc.suliText}>Log In</Text>
+            </TouchableOpacity>
           <TouchableOpacity onPress={()=>navigation.navigate()}>
             <Text style={tc.ubt}>Forgot Password?</Text> 
           </TouchableOpacity> 
