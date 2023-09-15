@@ -4,13 +4,24 @@ import { StatusBar } from 'expo-status-bar'
 import React,{ useState } from "react"
 import { themeColors as tc } from '../themes'
 import {useNavigation} from '@react-navigation/native'
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons/faArrowLeft'
+import { createUserWithEmailAndPassword } from 'firebase/auth'
+import { auth } from '../config/firebase'
 
 export default function SignUpScreen() {
     const navigation = useNavigation();
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    const handleSubmit = async ()=>
+    {
+        if(email && password){
+            try {
+                await createUserWithEmailAndPassword(auth, email, password);
+            } catch (err) {
+                console.log('got error: ',err.message);
+            }
+        }
+    }
     return (
         <View style={tc.container}>
             <Image source={require("../assets/images/logo_rn.png")} style={tc.image}/>
@@ -18,6 +29,7 @@ export default function SignUpScreen() {
             <View style={tc.inputView}>
                 <TextInput
                 style={tc.textInput}
+                value={email}
                 placeholder="Enter e-mail"
                 placeholderTextColor="#61216d"
                 onChangeText={(email) => setEmail(email)}
@@ -44,7 +56,7 @@ export default function SignUpScreen() {
                 autoCapitalize='none'
                 /> 
             </View> 
-            <TouchableOpacity style={tc.bsuli} onPress={()=>navigation.navigate()}>
+            <TouchableOpacity style={tc.bsuli} onPress={handleSubmit}>
                     <Text style={tc.suliText}>Sign Up</Text>
             </TouchableOpacity>
             <View style={tc.v}>
