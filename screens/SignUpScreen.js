@@ -1,5 +1,4 @@
 import { View , Text , Image, TouchableOpacity, TextInput} from 'react-native'
-import { SafeAreaProvider } from 'react-native-safe-area-context'
 import { StatusBar } from 'expo-status-bar'
 import React,{ useState } from "react"
 import { themeColors as tc } from '../themes'
@@ -28,6 +27,13 @@ export default function SignUpScreen() {
             <StatusBar style="auto" />
             <View style={tc.inputView}>
                 <TextInput
+                className="p-4 bg-gray-100 text-gray-700 rounded-2xl mb-3"
+                value='Vb'
+                placeholder='Enter Name'
+                />
+            </View> 
+            <View style={tc.inputView}>
+                <TextInput
                 style={tc.textInput}
                 value={email}
                 placeholder="Enter e-mail"
@@ -39,17 +45,8 @@ export default function SignUpScreen() {
             <View style={tc.inputView}>
                 <TextInput
                 style={tc.textInput}
+                value={password}
                 placeholder="Enter password"
-                placeholderTextColor="#61216d"
-                secureTextEntry={true}
-                onChangeText={(password) => setPassword(password)}
-                autoCapitalize='none'
-                /> 
-            </View> 
-            <View style={tc.inputView}>
-                <TextInput
-                style={tc.textInput}
-                placeholder="Confirm password"
                 placeholderTextColor="#61216d"
                 secureTextEntry={true}
                 onChangeText={(password) => setPassword(password)}

@@ -91,5 +91,11 @@ export const themeColors = {
         flex: 1,
         padding: 10,   
     },
+    barCode: {
+        flex: 1,
+        backgroundColor: '#fff',
+        alignItems: 'center',
+        justifyContent: 'center'
+    }
  }  
 
