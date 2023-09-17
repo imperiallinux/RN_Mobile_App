@@ -10,6 +10,7 @@ export default function SignUpScreen() {
     const navigation = useNavigation();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [username, setUsername] = useState('');
 
     const handleSubmit = async ()=>
     {
@@ -27,9 +28,10 @@ export default function SignUpScreen() {
             <StatusBar style="auto" />
             <View style={tc.inputView}>
                 <TextInput
-                className="p-4 bg-gray-100 text-gray-700 rounded-2xl mb-3"
-                value='Vb'
+                value={username}
                 placeholder='Enter Name'
+                placeholderTextColor="#61216d"
+                onChangeText={(username) => setUsername(username)}
                 />
             </View> 
             <View style={tc.inputView}>
