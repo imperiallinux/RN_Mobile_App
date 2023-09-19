@@ -4,6 +4,8 @@ import { StatusBar } from 'expo-status-bar'
 import React,{ useState } from "react"
 import { themeColors as tc } from '../themes'
 import {useNavigation} from '@react-navigation/native'
+import { signInWithEmailAndPassword } from 'firebase/auth'
+import { auth } from '../config/firebase'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons/faArrowLeft'
 
@@ -11,6 +13,16 @@ export default function LoginScreen() {
     const navigation = useNavigation();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+
+    const handleSubmit = async ()=>{
+      if(email && password){
+          try{
+              await signInWithEmailAndPassword(auth, email, password);
+          }catch(err){
+              console.log('got error: ',err.message);
+          }
+      }
+  }
     return (
         <View style={tc.container}>
           <Image source={require("../assets/images/logo_rn.png")} style={tc.image}/>
@@ -20,7 +32,8 @@ export default function LoginScreen() {
               style={tc.textInput}
               placeholder="email@mail.com"
               placeholderTextColor="#61216d"
-              onChangeText={(email) => setEmail(email)}
+              value={email}
+              onChangeText={value=> setEmail(value)}
               autoCapitalize='none'
             /> 
           </View> 
@@ -30,11 +43,12 @@ export default function LoginScreen() {
               placeholder="Password"
               placeholderTextColor="#61216d"
               secureTextEntry={true}
-              onChangeText={(password) => setPassword(password)}
+              value={password}
+              onChangeText={value=> setPassword(value)}
               autoCapitalize='none'
             /> 
           </View> 
-          <TouchableOpacity style={tc.bsuli} onPress={()=>navigation.navigate()}>
+          <TouchableOpacity style={tc.bsuli} onPress={handleSubmit}>
                     <Text style={tc.suliText}>Log In</Text>
             </TouchableOpacity>
           <TouchableOpacity onPress={()=>navigation.navigate()}>
