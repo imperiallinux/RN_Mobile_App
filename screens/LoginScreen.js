@@ -6,13 +6,11 @@ import { themeColors as tc } from '../themes'
 import {useNavigation} from '@react-navigation/native'
 import { signInWithEmailAndPassword } from 'firebase/auth'
 import { auth } from '../config/firebase'
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons/faArrowLeft'
 
 export default function LoginScreen() {
     const navigation = useNavigation();
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
 
     const handleSubmit = async ()=>{
       if(email && password){

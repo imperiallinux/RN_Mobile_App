@@ -8,6 +8,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import useAuth from '../hooks/useAuth'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { Ionicons } from '@expo/vector-icons'
 
 const Stack = createNativeStackNavigator();
 const BottomTab  = createBottomTabNavigator();
@@ -19,6 +20,7 @@ export default function AppNavigation() {
         <NavigationContainer>
             <BottomTab.Navigator initialRouteName='Welcome'>
                 <BottomTab.Screen name="Scanner" options={{headerShown: true}} component={ScannerScreen}/>
+                <Ionicons name="qr-code-outline" size={24} color="black" />
                 <BottomTab.Screen name="Settings" options={{headerShown: true}} component={SettingsScreen}/>
             </BottomTab.Navigator>
         </NavigationContainer>

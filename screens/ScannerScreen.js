@@ -7,6 +7,7 @@ import { themeColors as tc } from '../themes'
 export default function ScannerScreen() {
     const [hasPermission, setHasPermission] = React.useState(false);
     const [scanData, setScanData] = React.useState();
+    
   
     useEffect(() => {
       (async() => {
