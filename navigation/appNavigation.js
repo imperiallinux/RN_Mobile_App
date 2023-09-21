@@ -4,6 +4,7 @@ import WelcomeScreen from '../screens/WelcomeScreen';
 import LoginScreen from '../screens/LoginScreen';
 import SignUpScreen from '../screens/SignUpScreen';
 import SettingsScreen from '../screens/SettingsScreen';
+import ToDoScreen from '../screens/ToDoScreen';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import useAuth from '../hooks/useAuth'
@@ -18,9 +19,27 @@ export default function AppNavigation() {
     if(user){
        return (
         <NavigationContainer>
-            <BottomTab.Navigator initialRouteName='Welcome'>
+            <BottomTab.Navigator initialRouteName='Welcome'
+                screenOptions={({ route }) => ({
+                tabBarIcon: ({ focused, color, size }) => {
+                  let iconName;
+      
+                    if (route.name === 'Scanner') {
+                        iconName = focused ? 'qr-code' : 'qr-code-outline';
+                    } else if (route.name === 'Settings') {
+                    iconName = focused ? 'settings' : 'settings-outline';
+                    }
+                    else if (route.name === 'To Do List') {
+                        iconName = focused ? 'list-circle' : 'list-circle-outline';
+                        }
+                    return <Ionicons name={iconName} size={size} color={color} />;
+                    },
+                    tabBarActiveTintColor: '#833191',
+                    tabBarInactiveTintColor: '#B397B8',
+                })}
+            >
+                <BottomTab.Screen name="To Do List" options={{headerShown: true}} component={ToDoScreen}/>
                 <BottomTab.Screen name="Scanner" options={{headerShown: true}} component={ScannerScreen}/>
-                <Ionicons name="qr-code-outline" size={24} color="black" />
                 <BottomTab.Screen name="Settings" options={{headerShown: true}} component={SettingsScreen}/>
             </BottomTab.Navigator>
         </NavigationContainer>
