@@ -1,8 +1,9 @@
 import React, {useState} from 'react';
 import { KeyboardAvoidingView, StyleSheet, Text, View, TextInput, TouchableOpacity, Keyboard, ScrollView } from 'react-native';
 import  Task from './handler/Task';
+import { Ionicons } from '@expo/vector-icons'; 
 
-export default function ToDoScreen ()  {
+export default function ToDoScreen (props)  {
     const [task, setTask] = useState();
   const [taskItems, setTaskItems] = useState([]);
 
@@ -53,10 +54,10 @@ export default function ToDoScreen ()  {
         behavior={Platform.OS === "ios" ? "padding" : "height"}
         style={styles.writeTaskWrapper}
       >
-        <TextInput style={styles.input} placeholder={'Write a task'} value={task} onChangeText={text => setTask(text)} />
+        <TextInput style={styles.input} color="#833191" placeholder={'Write a task'} value={task} onChangeText={text => setTask(text)} />
         <TouchableOpacity onPress={() => handleAddTask()}>
           <View style={styles.addWrapper}>
-            <Text style={styles.addText}>+</Text>
+            <Text style={styles.addText}><Ionicons name="add" size={46} color="#833191" /></Text>
           </View>
         </TouchableOpacity>
       </KeyboardAvoidingView>
@@ -68,15 +69,16 @@ export default function ToDoScreen ()  {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#E8EAED',
+    backgroundColor: '#f0ebf2',
   },
   tasksWrapper: {
-    paddingTop: 80,
+    paddingTop: 20,
     paddingHorizontal: 20,
   },
   sectionTitle: {
     fontSize: 24,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    color: "#833191"
   },
   items: {
     marginTop: 30,
@@ -92,20 +94,21 @@ const styles = StyleSheet.create({
   input: {
     paddingVertical: 15,
     paddingHorizontal: 15,
-    backgroundColor: '#FFF',
-    borderRadius: 60,
-    borderColor: '#C0C0C0',
+    backgroundColor: '#DBC4F0',
+    borderRadius: 22,
+    borderColor: '#833191',
     borderWidth: 1,
-    width: 250,
+    width: '75%',
+    color: '#833191'
   },
   addWrapper: {
     width: 60,
     height: 60,
-    backgroundColor: '#FFF',
+    backgroundColor: '#DBC4F0',
     borderRadius: 60,
     justifyContent: 'center',
     alignItems: 'center',
-    borderColor: '#C0C0C0',
+    borderColor: '#833191',
     borderWidth: 1,
   },
   addText: {},

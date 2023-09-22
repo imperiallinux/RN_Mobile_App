@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
 import { View, Text, Button, TextInput,TouchableOpacity } from 'react-native';
+import { themeColors as tc } from '../themes'
+import { signOut } from 'firebase/auth'
+import { deleteUser } from 'firebase/auth'
+import { auth } from '../config/firebase'
 
 export default  function SettingsScreen() {
   const [username, setUsername] = useState(''); 
@@ -10,31 +14,32 @@ export default  function SettingsScreen() {
   }
 
   const handleDeleteProfile = () => {
-    if (showDeleteConfirmation) {
-      // Implement profile deletion logic here
-      // This might include clearing user data, account deletion, etc.
-      // After deleting, navigate back to the login or home screen
-    } else {
-      // Show a confirmation dialog before deleting
-      setShowDeleteConfirmation(true);
-    }
-  };
+    const user = auth.currentUser;
+    deleteUser(user).then(()=> {
+        navigation.navigate('SignUpScreen')
+    }).catch((error) => {
+        Alert.alert(error);
+    });
+  }
 
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Settings</Text>
-      <TextInput
-        placeholder="Change Username"
-        value={username}
-        onChangeText={(text) => setUsername(text)}
-      />
-      <TouchableOpacity onPress={handleLogout} className="p-1 bg-red-400 rounded-lg">
-          <Text className="text-white text-lg font-bold">Logout</Text>
+        
+        <View style={tc.inputView}>
+            <TextInput
+                value={username}
+                placeholder="Change Username"
+                placeholderTextColor="#61216d"
+                onChangeText={(username) => setUsername(username)}
+            />
+        </View> 
+        <TouchableOpacity style={tc.bsuli} onPress={handleLogout}>
+            <Text style={tc.suliText}>Logout</Text>
         </TouchableOpacity>
-      <Button
-        title={showDeleteConfirmation ? 'Confirm Delete' : 'Delete Profile'}
-        onPress={handleDeleteProfile}
-      />
+        <TouchableOpacity style={tc.bsuli}
+            onPress={handleDeleteProfile}>
+            <Text style={tc.suliText}>{showDeleteConfirmation ? 'Confirm Delete' : 'Delete Profile'}</Text>
+        </TouchableOpacity>
     </View>
   );
 }

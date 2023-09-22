@@ -44,6 +44,7 @@ export const themeColors = {
         borderRadius: 30,
         width: "80%",
         height: 45,
+        marginBottom: 10,
     },
     bts: {
         color: '#fff',

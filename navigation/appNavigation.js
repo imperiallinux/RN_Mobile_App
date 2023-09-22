@@ -5,6 +5,7 @@ import LoginScreen from '../screens/LoginScreen';
 import SignUpScreen from '../screens/SignUpScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 import ToDoScreen from '../screens/ToDoScreen';
+import NfcScreen from '../screens/NfcScreen';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import useAuth from '../hooks/useAuth'
@@ -31,7 +32,10 @@ export default function AppNavigation() {
                     }
                     else if (route.name === 'To Do List') {
                         iconName = focused ? 'list-circle' : 'list-circle-outline';
-                        }
+                    }
+                    else if (route.name === 'NFC') {
+                        iconName = focused ? 'wifi' : 'wifi';
+                    }
                     return <Ionicons name={iconName} size={size} color={color} />;
                     },
                     tabBarActiveTintColor: '#833191',
@@ -40,6 +44,7 @@ export default function AppNavigation() {
             >
                 <BottomTab.Screen name="To Do List" options={{headerShown: true}} component={ToDoScreen}/>
                 <BottomTab.Screen name="Scanner" options={{headerShown: true}} component={ScannerScreen}/>
+                <BottomTab.Screen name="NFC" options={{headerShown: true}} component={NfcScreen}/>
                 <BottomTab.Screen name="Settings" options={{headerShown: true}} component={SettingsScreen}/>
             </BottomTab.Navigator>
         </NavigationContainer>
